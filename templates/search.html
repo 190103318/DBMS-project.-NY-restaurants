@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+        integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/base.min.css"
+        integrity="sha512-Pf6FT8Bk6JPIDNqg5ASpHs+Vx5hQyg0RdDU7uwlBa/X+sT4oC2/OBN78/o2OFI/nilyF2V3bpLSqsOO5Ne/Nng=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/components.min.css"
+        integrity="sha512-f6TS5CFJrH/EWmarcBwG54/kW9wwejYMcw+I7fRnGf33Vv4yCvy4BecCKTti3l8e8HnUiIbxx3V3CuUYGqR1uQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/utilities.min.css"
+        integrity="sha512-NrQ4Uz/HpYtzXuDDl8xVLXOkYe18AzMcEYI96vQBJ/BTniQJAEWPn9tmzMwgBfUdANlpzB0J5+sTLeQ6jmY4bg=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <nav class="w-full h-16 bg-white shadow-lg flex items-center px-5">
+        <a class="text-xl font-bold" href="/">Patronus</a>
+    </nav>
+    <form action="/search" class="flex">
+        <!-- Category filter -->
+        <div class="w-72 h-screen border px-6 py-4 overflow-y-scroll">
+
+            <p class="text-2xl font-medium pl-4 pb-1">Price</p>
+            <input type="radio" id="high" name="price" value="High">
+            <label for="high" class="text-gray-700 font-semibold">High</label><br>
+            <input type="radio" id="medium" name="price" value="Medium">
+            <label for="medium" class="text-gray-700 font-semibold">Medium</label><br>
+            <input type="radio" id="low" name="price" value="Low">
+            <label for="low" class="text-gray-700 font-semibold">Low</label><br>
+            <hr class="mt-2">
+            <p class="text-2xl font-medium mt-4 pl-4 pb-1">Rating</p>
+            {%for j in range(5, 0, -1)%}
+            <div class="flex items-center">
+                <input type="radio" id="{{j}}" name="rating" value="{{j}}">
+                <label for="{{j}}" class="text-gray-700 font-semibold flex ml-1">
+                    {%for i in range(j)%}
+                    <svg width="20" height="20" fill="currentColor" class="inline text-yellow-500">
+                        <path
+                            d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                    </svg>
+                    {% endfor %}
+                </label><br>
+            </div>
+            {% endfor %}
+            <hr class="mt-2">
+            <p class="text-2xl font-medium pl-4 pb-1 mt-4">Cuisine</p>
+            {%for cuisine in cuisines %}
+            <input type="radio" id="{{cuisine}}" name="cuisine" value="{{cuisine}}">
+            <label for="{{cuisine}}" class="text-gray-700 font-semibold">{{cuisine}}</label><br>
+            {% endfor %}
+        </div>
+        <div class="flex-1 h-screen">
+            <div class="w-full h-24 flex flex-col items-center justify-center">
+                <!-- search bar -->
+                <div class="relative flex items-center gap-2">
+                    <svg class="w-6 h-6 absolute top-3 left-3" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <input class="w-72 h-12 border rounded-lg pl-12" name="query" placeholder="Search for restaurants">
+                    <button type="submit" class="h-12 w-24 bg-black text-white opacity-90 rounded-lg font-bold">Let'go</button>
+                </div>
+            </div>
+            <div class="px-12">
+                <div class="grid grid-cols-2 gap-8">
+                    {%for rest in filtered %}
+                    <a href="/view/{{rest[0]}}"
+                        class="h-32 w-full bg-blue-100 rounded shadow-md border flex items-center relative">
+                        <img src="/static/{{rest[6] }}"
+                            class="h-32 w-48 mr-2 object-fit" />
+                        <div class="w-full">
+                            <h2 class="text-lg font-semibold text-black truncate w-full mb-3">
+                                {{rest[1]}}
+                            </h2>
+                            <div class="flex items-center text-sm mb-2">
+                                <svg width="20" height="20" fill="currentColor" class="text-yellow-500">
+                                    <path
+                                        d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                                </svg>
+                                <div class="ml-1">
+                                    <span class="text-black">{{rest[3]}}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class=" text-red-500"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <div class="ml-1 w-full">
+                                    <span class="text-black">{{rest[2]}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+
+</html>

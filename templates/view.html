@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Info - {{info[0]}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+        integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/base.min.css"
+        integrity="sha512-Pf6FT8Bk6JPIDNqg5ASpHs+Vx5hQyg0RdDU7uwlBa/X+sT4oC2/OBN78/o2OFI/nilyF2V3bpLSqsOO5Ne/Nng=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/components.min.css"
+        integrity="sha512-f6TS5CFJrH/EWmarcBwG54/kW9wwejYMcw+I7fRnGf33Vv4yCvy4BecCKTti3l8e8HnUiIbxx3V3CuUYGqR1uQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/utilities.min.css"
+        integrity="sha512-NrQ4Uz/HpYtzXuDDl8xVLXOkYe18AzMcEYI96vQBJ/BTniQJAEWPn9tmzMwgBfUdANlpzB0J5+sTLeQ6jmY4bg=="
+        crossorigin="anonymous" />
+    <style>
+        progress {
+            border: 1px solid gainsboro;
+            border-radius: 7px;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: white;
+            border-radius: 7px;
+        }
+
+        progress::-webkit-progress-value {
+            background-color: #3b82f6;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="w-full h-16 bg-white shadow-lg flex items-center px-5">
+        <a class="text-xl font-bold" href="/">Patronus</a>
+    </nav>
+    <div class="px-12 py-12 flex gap-12">
+        <div class="">
+            <img class="w-96 h-64 rounded bg-blue-50"
+                src="/static/{{info[26] }}"
+                alt="">
+            <div class="w-96"></div>
+
+            <h2 class="text-2xl font-normal mt-2">Overall ratings</h2>
+            <ul class="flex mt-2">
+                <li class="text-center mr-2 pr-2 border-r">
+                    <p class="font-semibold">{{info[8]}}</p>
+                    <p class="text-sm">Food</p>
+                </li>
+                <li class="text-center mr-2 pr-2 border-r">
+                    <p class="font-semibold">{{info[9]}}</p>
+                    <p class="text-sm">Service</p>
+                </li>
+                <li class="text-center mr-2  pr-2 border-r">
+                    <p class="font-semibold">{{info[10]}}</p>
+                    <p class="text-sm">Ambience</p>
+                </li>
+                <li class="text-center">
+                    <p class="font-semibold">{{info[11]}}</p>
+                    <p class="text-sm">Value</p>
+                </li>
+            </ul>
+            <!-- star ratings -->
+            <div class="mt-3">
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold">5</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <progress class="bg-gray-100" value="{{info[17]}}" max="{{star_review_sum}}"></progress>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold">4</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <progress value="{{info[16]}}" max="{{star_review_sum}}"></progress>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold">3</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <progress value="{{info[15]}}" max="{{star_review_sum}}"></progress>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold">2</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <progress value="{{info[15]}}" max="{{star_review_sum}}"></progress>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-lg font-semibold mr-1">1</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <progress value="{{info[14]}}" max="{{star_review_sum}}"></progress>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ul class="mb-6">
+                <li class="text-4xl font-semibold text-gray-700">
+                    {{info[0]}}
+                </li>
+                <li class="text-lg font-thin text-gray-700 mb-5">{{info[1]}}</li>
+
+
+                <li class="text-lg font-semibold text-gray-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                    <p class="ml-1">Type: <span class="font-normal">{{info[19]}}</span></p>
+                </li>
+                <li class="text-lg font-semibold text-gray-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <p class="ml-1">Price: <span class="font-normal">{{info[12]}}</span></p>
+                </li>
+                <li class="text-lg font-semibold text-gray-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <p class="ml-1">Website: <span class="font-normal">{{info[5]}}</span></p>
+                </li>
+                <li class="text-lg font-semibold text-gray-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <p class="ml-1">Phone: <span class="font-normal">{{info[4]}}</span></p>
+                </li>
+            </ul>
+            <h1 class="text-2xl mb-2">Description</h1>
+            <p class="font-semibold text-gray-700 tracking-tight">
+                {{info[18]}}
+            </p>
+        </div>
+    </div>
+    <div class="px-12">
+        <h1 class="text-2xl">Recommended</h1>
+        <div class="grid grid-cols-4 gap-12 mt-4 mb-10">
+            {% for rec in recommended %}
+            <a href="/view/{{rec[0]}}" class="relative bg-gray-100 rounded-lg shadow-md border">
+                <img src="/static/{{rec[6] }}"
+                    alt="" class="w-full h-60 object-cover rounded-t-lg" />
+                <div class="py-2 px-3">
+                    <h2 class="text-xl font-semibold text-black truncate w-full mb-3">
+                        {{rec[1]}}
+                    </h2>
+                    <div class="flex items-center text-sm mb-2">
+                        <svg width="20" height="20" fill="currentColor" class="text-yellow-500">
+                            <path
+                                d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">{{rec[3]}}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">{{rec[2]}}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+
+</html>

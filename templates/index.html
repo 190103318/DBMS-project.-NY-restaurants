@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home - ResFind </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+        integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/base.min.css"
+        integrity="sha512-Pf6FT8Bk6JPIDNqg5ASpHs+Vx5hQyg0RdDU7uwlBa/X+sT4oC2/OBN78/o2OFI/nilyF2V3bpLSqsOO5Ne/Nng=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/components.min.css"
+        integrity="sha512-f6TS5CFJrH/EWmarcBwG54/kW9wwejYMcw+I7fRnGf33Vv4yCvy4BecCKTti3l8e8HnUiIbxx3V3CuUYGqR1uQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/utilities.min.css"
+        integrity="sha512-NrQ4Uz/HpYtzXuDDl8xVLXOkYe18AzMcEYI96vQBJ/BTniQJAEWPn9tmzMwgBfUdANlpzB0J5+sTLeQ6jmY4bg=="
+        crossorigin="anonymous" />
+    <style>
+        .main-bg {
+            background-image: url("https://images.hdqwalls.com/download/sunset-new-york-city-img-1920x1200.jpg");
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="w-full h-16 bg-gray-100 shadow-lg flex items-center px-5">
+        <span class="text-xl font-bold">Patronus</span>
+    </nav>
+    <!-- Search container -->
+    <form action="/search"
+        class="w-full main-bg h-96 bg-gray-100 bg-cover bg-center flex flex-col items-center justify-center">
+        <h1 class="font-bold h-16 text-4xl text-center text-white">New York Area Restaurants</h1>
+        <!-- search bar -->
+        <div class="relative flex items-center gap-2">
+            <svg class="w-6 h-6 absolute top-3 left-3" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <input class="w-64 h-12 rounded-lg pl-12" name="query" placeholder="Search restaurants">
+            <button type="submit" class="h-12 w-24 bg-black text-white opacity-90 rounded-lg font-bold">Let'go</button>
+        </div>
+        <!-- Quick search -->
+        <div class="flex items-center my-6 gap-2 ">
+            <span class="font-semibold text-white">Quick search:</span>
+            <select class="w-20 h-8 rounded" name="cuisine">
+                <option value="American">Cuisine</option>
+                {%for cuisine in cuisines%}
+                <option value="{{cuisine}}">{{cuisine}}</option>
+                {%endfor%}
+            </select>
+            <select class="w-20 h-8 rounded" name="price">
+                <option value="Medium">Cost</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <select class="w-20 h-8 rounded" name="rating">
+                <option value="5">Rating</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+        </div>
+    </form>
+    <div class="px-10 mt-0">
+        {%for one in featured%}
+        <!-- Adv card -->
+        <div class="py-16 flex">
+            <div class="flex-1 flex-col">
+                <h1 class="text-4xl font-semibold">Featured</h1>
+                <div class="relative  pt-28 pb-3 bg-gradient-to-t from-black sm:bg-none">
+                    <h2 class="text-xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">
+                        {{one[0]}}
+                    </h2>
+                </div>
+                <div class="col-start-1 row-start-2  sm:pb-16">
+                    <div class="flex items-center text-sm font-medium">
+                        <svg width="20" height="20" fill="currentColor" class="text-violet-600">
+                            <path
+                                d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">{{one[2]}}</span>
+                            <span class="sm:hidden md:inline">({{one[3]}})</span>
+                        </div>
+                        <div class="text-base font-normal mx-2">·</div>
+                        <div>{{one[1]}}</div>
+                    </div>
+                </div>
+                <a href="{{one[4]}}" class="bg-indigo-100 text-indigo-700 text-base font-semibold px-6 py-2 rounded-lg">
+                    Visit site
+                </a>
+            </div>
+            <div class="flex-1">
+                <img src="/static/{{one[5]}}"
+                    alt="" class="w-full h-full object-cover bg-gray-100 sm:rounded-lg" />
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="flex mt-2 justify-between items-center">
+            <h1 class="text-4xl font-semibold">Most popular</h1>
+            <a class="m-0 p-0 underline" href="/search?query=&cuisine=American&price=Medium&rating=5">View all</a>
+        </div>
+        <div class="grid grid-cols-4 gap-8 mt-4">
+            {% for popular in most_popular %}
+            <a href="/view/{{popular[3]}}" class="relative bg-gray-100 rounded-lg shadow-md border">
+                <img src="/static/{{popular[4] }}"
+                    alt="" class="w-full h-60 object-cover rounded-t-lg" />
+                <div class="py-2 px-3">
+                    <h2 class="text-xl font-semibold text-black truncate w-full mb-3">
+                        {{popular[0]}}
+                    </h2>
+                    <div class="flex items-center text-sm mb-2">
+                        <svg width="20" height="20" fill="currentColor" class="text-yellow-500">
+                            <path
+                                d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">Rating {{popular[2]}}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">{{popular[1]}}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="flex mt-20 justify-between items-center">
+            <h1 class="text-4xl font-semibold">Most rated</h1>
+            <a class="m-0 p-0 underline" href="/search?query=&cuisine=American&price=Medium&rating=5">View all</a>
+        </div>
+        <div class="grid grid-cols-4 gap-12 mt-4 mb-10">
+            {% for rated in most_rated %}
+            <a href="/view/{{rated[3]}}" class="relative bg-gray-100 rounded-lg shadow-md border">
+                <img src="/static/{{rated[4] }}"
+                    alt="" class="w-full h-60 object-cover rounded-t-lg" />
+                <div class="py-2 px-3">
+                    <h2 class="text-xl font-semibold text-black truncate w-full mb-3">
+                        {{rated[0]}}
+                    </h2>
+                    <div class="flex items-center text-sm mb-2">
+                        <svg width="20" height="20" fill="currentColor" class="text-yellow-500">
+                            <path
+                                d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">Rating {{rated[2]}}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">
+                            <span class="text-black">{{rated[1]}}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home - ResFind </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+        integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/base.min.css"
+        integrity="sha512-Pf6FT8Bk6JPIDNqg5ASpHs+Vx5hQyg0RdDU7uwlBa/X+sT4oC2/OBN78/o2OFI/nilyF2V3bpLSqsOO5Ne/Nng=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/components.min.css"
+        integrity="sha512-f6TS5CFJrH/EWmarcBwG54/kW9wwejYMcw+I7fRnGf33Vv4yCvy4BecCKTti3l8e8HnUiIbxx3V3CuUYGqR1uQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/utilities.min.css"
+        integrity="sha512-NrQ4Uz/HpYtzXuDDl8xVLXOkYe18AzMcEYI96vQBJ/BTniQJAEWPn9tmzMwgBfUdANlpzB0J5+sTLeQ6jmY4bg=="
+        crossorigin="anonymous" />
+    <style>
+        .main-bg {
+            background-image: url("https://images.hdqwalls.com/download/sunset-new-york-city-img-1920x1200.jpg");
+        }
+        #myUL {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px; /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block
+        }
+
+        #myUL li a:hover:not(.header) {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="w-full h-16 bg-gray-100 shadow-lg flex items-center px-5">
+        <a href="/admin" class="text-xl font-bold">Logo</a>
+    </nav>
+
+    <form action="/save/{{info[23]}}" class="px-8 py-4">
+        <h1 class="text-3xl">Edit Form</h1>
+        <a class="w-20 bg-red-500 bg-red-50 px-3 py-2 block" href="/delete/{{info[23]}}">Delete</a>
+        {%for i in range(length)%}
+            <label class="font-bold">{{colnames[i]}}</label>
+            <input class="w-full block border" name="{{colnames[i]}}" value="{{info[i]}}" placeholder="{{colnames[i]}}"/>
+        {%endfor%}
+        <button type="submit" class="bg-blue-500 text-blue-50 px-3 py-2 rounded">Save</button>
+    </form>
+</body>
+
+</html>
